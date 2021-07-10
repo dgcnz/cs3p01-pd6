@@ -39,3 +39,5 @@ b) Paralelice la multiplicacion matriz-vector con OMP, y genere una grafica velo
 c) Paralelice la multiplicacion matriz-vector con MPI+OMP, y compare en una grafica velocidad vs. numero de procesos, las curvas para np=4,8,16 y nthreads = 4,8, con los correspondientes modelos en MPI (np=4,8,16)
 
 d) Comente los resultados y decida sobre la utilidad de implementar un modelo hibrido para este problema
+
+En ambas de graficas de los puntos a (MPI) y b (OMP) se observa una relacion directamente proporcional entre el speedup y el numero de procesadores. Esto es mas notable con OMP.
