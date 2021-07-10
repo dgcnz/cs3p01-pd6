@@ -23,14 +23,7 @@ int main(int argc, char **argv)
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
     if (rank == 0)
-    {
         initialize_A_v(A, v);
-
-        // cout << "Matrix A:" << endl;
-        // print_matrix(A);
-        // cout << "Vector v:" << endl;
-        // print_vector(v);
-    }
 
     int i_beg = f_beg(rank), i_end = f_beg(rank + 1);
 
