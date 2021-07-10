@@ -28,15 +28,15 @@ c) La complejidad del algoritmo secuencial es `O(n^2)`, por lo visto en la parte
 
 ## Ejercicio 3
 
-a) Genere una grafica velocidad vs. numero de procesos en MPI, para np=2,4,8,16
+a) Genere una grafica velocidad vs. numero de procesos en MPI, para np=2,4,8,16 [Script](ex3/mpi.cpp)
 
 ![](ex3/mpi.png)
 
-b) Paralelice la multiplicacion matriz-vector con OMP, y genere una grafica velocidad vs. numero de threads, para nthreads=2,4,8,16
+b) Paralelice la multiplicacion matriz-vector con OMP, y genere una grafica velocidad vs. numero de threads, para nthreads=2,4,8,16 [Script](ex3/omp.cpp)
 
 ![](ex3/omp.png)
 
-c) Paralelice la multiplicacion matriz-vector con MPI+OMP, y compare en una grafica velocidad vs. numero de procesos, las curvas para np=4,8,16 y nthreads = 4,8, con los correspondientes modelos en MPI (np=4,8,16)
+c) Paralelice la multiplicacion matriz-vector con MPI+OMP, y compare en una grafica velocidad vs. numero de procesos, las curvas para np=4,8,16 y nthreads = 4,8, con los correspondientes modelos en MPI (np=4,8,16) [Script](mpi_openmp.cpp)
 
 d) Comente los resultados y decida sobre la utilidad de implementar un modelo hibrido para este problema
 
