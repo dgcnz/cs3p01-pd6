@@ -1,3 +1,5 @@
+#include <cassert>
+#include <cstdio>
 #include <iostream>
 #include <mpi.h>
 
@@ -16,6 +18,8 @@ int A[N][N], v[N], x[N];
 int main(int argc, char **argv)
 {
     int rank;
+    assert(argc == 2);
+    const int T = atoi(argv[1]);
 
     MPI_Init(NULL, NULL);
 
@@ -23,14 +27,7 @@ int main(int argc, char **argv)
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
     if (rank == 0)
-    {
         initialize_A_v(A, v);
-
-        // cout << "Matrix A:" << endl;
-        // print_matrix(A);
-        // cout << "Vector v:" << endl;
-        // print_vector(v);
-    }
 
     int i_beg = f_beg(rank), i_end = f_beg(rank + 1);
 
@@ -65,11 +62,12 @@ int main(int argc, char **argv)
 
     // start = MPI_Wtime();
     // Multiply
-#pragma omp parallel for default(none) shared(A, v, x) schedule(static, chunk)
+#pragma omp parallel for default(none) shared(A, v, x) schedule(static, chunk) \
+    num_threads(T)
     for (int i = i_beg; i < i_end; i++)
     {
         double xi = 0.0;
-#pragma omp parallel for default(none) firstprivate(i) shared(A, v, xi) schedule(static,chunk) reduction(+:xi)
+#pragma omp parallel for default(none) firstprivate(i) shared(A, v, xi) schedule(static,chunk) reduction(+:xi) num_threads(T)
         for (int j = 0; j < N; j++)
             xi += A[i][j] * v[j];
         x[i] = xi;
@@ -102,7 +100,7 @@ int main(int argc, char **argv)
         // cout << "Result vector x:" << endl;
         // print_vector(x);
 
-        cout << "TIME " << 1000 * (finish - start) << endl;
+        printf("%f", 1000.0 * (finish - start));
     }
 
     return 0;
