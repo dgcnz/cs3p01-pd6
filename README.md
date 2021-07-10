@@ -42,4 +42,4 @@ c) Paralelice la multiplicacion matriz-vector con MPI+OMP, y compare en una graf
 
 d) Comente los resultados y decida sobre la utilidad de implementar un modelo hibrido para este problema
 
-En ambas de graficas de los puntos a (MPI) y b (OMP) se observa una relacion directamente proporcional entre el speedup y el numero de procesadores. Esto es mas notable con OMP.
+En ambas de graficas de los puntos a (MPI) y b (OMP) se observa una relacion directamente proporcional entre el speedup y el numero de procesadores. Esto es mas notable con OMP, obteniendo un mayor speedup en este caso. La implementacion hibrida podria servir para mejorar la implementacion.
