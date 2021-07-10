@@ -3,7 +3,7 @@ from subprocess import check_output
 
 TESTS = 100
 P_TESTS = [2, 4, 8, 16]
-COMMAND = "mpirun -np {0} ./ex3.out"
+COMMAND = "./omp.out {}"
 
 
 def measure_time(p):
@@ -11,7 +11,7 @@ def measure_time(p):
 
     for i in range(TESTS):
         out = check_output(COMMAND.format(p).split()).decode("utf-8")
-        total += float(out.split()[1])
+        total += float(out)
 
     total /= TESTS
 
@@ -33,7 +33,7 @@ def main():
     plt.ylabel("Speedup")
     plt.xlabel("Number of processes")
     plt.plot(P_TESTS, tests)
-    plt.savefig("mpi.png")
+    plt.savefig("omp.png")
 
 
 if __name__ == "__main__":
