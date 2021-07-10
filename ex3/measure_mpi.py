@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from subprocess import check_output
 
 TESTS = 100
-P_TESTS = [2, 4, 8, 16]
+P_TESTS = [2, 4]  # , 8, 16
 COMMAND = "mpirun -np {0} ./ex3.out"
 
 
